@@ -1,0 +1,11 @@
+{
+  "files.encoding": "utf8",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.renderWhitespace": "boundary",
+  "html.validate.scripts": false,
+  "css.lint.unknownAtRules": "ignore"
+}

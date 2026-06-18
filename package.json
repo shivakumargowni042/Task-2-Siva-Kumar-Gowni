@@ -1,0 +1,15 @@
+{
+  "name": "floramind-ai-landing",
+  "version": "1.0.0",
+  "description": "A premium futuristic AI landing experience for FloraMind AI",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && xcopy /I /Y assets\\js\\index.js dist\\assets\\js\\ && xcopy /I /Y manifest.json dist\\ && xcopy /I /Y sw.js dist\\ && if exist assets\\icons\\ xcopy /I /Y /E assets\\icons dist\\assets\\icons\\",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {}
+}

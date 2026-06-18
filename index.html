@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FloraMind AI | Where Artificial Intelligence Meets Botanical Intelligence</title>
+  <meta name="description" content="A next-generation machine learning platform designed to classify Iris flower species through intelligent pattern recognition and supervised learning. DecodeLabs AI Project 2.">
+  <meta property="og:title" content="FloraMind AI | Botanical Intelligence Platform">
+  <meta property="og:description" content="A next-gen ML platform classifying Iris species through intelligent pattern recognition. DecodeLabs AI Project 2.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://floramind-ai.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FloraMind AI | Botanical Intelligence Platform">
+  <meta name="twitter:description" content="A next-gen ML platform classifying Iris species through intelligent pattern recognition.">
+  <meta name="theme-color" content="#030508" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%2300f0ff'/></svg>">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FloraMind AI">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+
+  <!-- ================================================== -->
+  <!-- CINEMATIC STARTUP EXPERIENCE (SPLASH SCREEN)       -->
+  <!-- ================================================== -->
+  <div id="splash-screen">
+    <!-- Cinematic light pulses & energy gradients in background -->
+    <div class="splash-glow-bg"></div>
+    <div class="splash-pulse-ring" id="pulse-ring"></div>
+    
+    <div class="splash-logo-container">
+      <!-- Custom Iris Logo SVG divided into 8 fragment paths -->
+      <svg class="splash-logo-svg" viewBox="0 0 200 200" width="220" height="220">
+        <!-- Glowing Core: Revealed after assembly -->
+        <g class="splash-core-group" id="splash-core">
+          <circle cx="100" cy="100" r="16" class="splash-energy-core" />
+          <circle cx="100" cy="100" r="26" class="splash-energy-ring-1" />
+          <circle cx="100" cy="100" r="36" class="splash-energy-ring-2" />
+          <!-- Neural nodes in core -->
+          <circle cx="100" cy="80" r="2.5" class="splash-core-node" />
+          <circle cx="100" cy="120" r="2.5" class="splash-core-node" />
+          <circle cx="80" cy="100" r="2.5" class="splash-core-node" />
+          <circle cx="120" cy="100" r="2.5" class="splash-core-node" />
+          <line x1="100" y1="80" x2="100" y2="120" class="splash-core-link" />
+          <line x1="80" y1="100" x2="120" y2="100" class="splash-core-link" />
+        </g>
+        
+        <!-- Fragment 1: Top (Center standard petal) -->
+        <path d="M100,84 C100,48 84,32 100,10 C116,32 100,48 100,84 Z" class="splash-fragment frag-top" id="s-frag-top" />
+        
+        <!-- Fragment 2: Bottom (Center fall petal) -->
+        <path d="M100,116 C100,152 80,168 100,190 C120,168 100,152 100,116 Z" class="splash-fragment frag-bottom" id="s-frag-bottom" />
+        
+        <!-- Fragment 3: Left (Left standard wing) -->
+        <path d="M84,100 C48,100 32,84 10,100 C32,116 48,100 84,100 Z" class="splash-fragment frag-left" id="s-frag-left" />
+        
+        <!-- Fragment 4: Right (Right standard wing) -->
+        <path d="M116,100 C152,100 168,84 190,100 C168,116 152,100 116,100 Z" class="splash-fragment frag-right" id="s-frag-right" />
+        
+        <!-- Fragment 5: Top-Left (Upper left accent petal) -->
+        <path d="M88,88 C62,62 48,52 30,46 C46,30 62,46 88,88 Z" class="splash-fragment frag-top-left" id="s-frag-top-left" />
+        
+        <!-- Fragment 6: Top-Right (Upper right accent petal) -->
+        <path d="M112,88 C138,62 152,52 170,46 C154,30 138,46 112,88 Z" class="splash-fragment frag-top-right" id="s-frag-top-right" />
+        
+        <!-- Fragment 7: Bottom-Left (Lower left accent petal) -->
+        <path d="M88,112 C62,138 48,152 30,154 C46,170 62,154 88,112 Z" class="splash-fragment frag-bottom-left" id="s-frag-bottom-left" />
+        
+        <!-- Fragment 8: Bottom-Right (Lower right accent petal) -->
+        <path d="M112,112 C138,138 152,152 170,154 C154,170 138,154 112,112 Z" class="splash-fragment frag-bottom-right" id="s-frag-bottom-right" />
+      </svg>
+    </div>
+    
+    <div class="splash-text-container">
+      <div id="splash-title">FLORAMIND AI</div>
+      <div id="splash-subtitle">System Initializing...</div>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- BACKGROUND EXPERIENCE                              -->
+  <!-- ================================================== -->
+  <div class="background-wrapper">
+    <!-- Aurora Orbs -->
+    <div class="aurora-orb orb-cyan"></div>
+    <div class="aurora-orb orb-purple"></div>
+    <div class="aurora-orb orb-pink"></div>
+    <div class="aurora-orb orb-blue"></div>
+    
+    <!-- Digital grid / neural network overlay -->
+    <div class="grid-overlay"></div>
+    <div id="background-particles"></div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- CINEMATIC SPLIT TRANSITION OVERLAY                -->
+  <!-- ================================================== -->
+  <div id="split-transition-overlay" class="split-overlay">
+    <div class="split-half split-left"></div>
+    <div class="split-half split-right"></div>
+    <div class="energy-glow-core"></div>
+    <div class="transition-flash"></div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- MAIN LANDING PAGE CONTENT                          -->
+  <!-- ================================================== -->
+  <div id="main-app" class="blurred-reveal">
+    
+    <!-- Landing View Wrapper -->
+    <div id="landing-view" class="active-view">
+      
+      <!-- Floating Glassmorphism Navbar -->
+      <header class="floating-navbar">
+        <div class="nav-container">
+          <!-- Logo Branding -->
+          <a href="#home" class="nav-logo">
+            <div class="mini-logo">
+              <svg viewBox="0 0 100 100" width="32" height="32">
+                <circle cx="50" cy="50" r="8" class="mini-core" />
+                <path d="M50,42 C50,26 43,18 50,8 C57,18 50,26 50,42 Z" class="mini-petal" />
+                <path d="M50,58 C50,74 43,82 50,92 C57,82 50,74 50,58 Z" class="mini-petal" />
+                <path d="M42,50 C26,50 18,43 8,50 C18,57 26,50 42,50 Z" class="mini-petal" />
+                <path d="M58,50 C74,50 82,43 92,50 C82,57 74,50 58,50 Z" class="mini-petal" />
+              </svg>
+            </div>
+            <span class="logo-text">FLORAMIND <span class="accent-text">AI</span></span>
+          </a>
+          
+          <!-- Middle Menu links -->
+          <nav class="nav-menu">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#dataset" class="nav-link">Dataset</a>
+            <a href="#workflow" class="nav-link">Workflow</a>
+            <a href="#classification" class="nav-link">Classification</a>
+            <a href="#analytics" class="nav-link">Analytics</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </nav>
+          
+          <!-- Right side CTAs -->
+          <div class="nav-actions">
+            <!-- Auth Button (shows sign in) -->
+            <button id="auth-btn" class="auth-nav-btn" aria-label="Account">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span class="auth-btn-text">Sign In</span>
+            </button>
+
+            <!-- User Profile Dropdown (shown when logged in) -->
+            <div id="user-profile-container" class="user-profile-container">
+              <button id="profile-trigger-btn" class="profile-trigger-btn" aria-label="Profile">U</button>
+              <div id="profile-dropdown" class="profile-dropdown">
+                <div class="dropdown-user-info">
+                  <span class="dropdown-user-name" id="dropdown-user-name">User</span>
+                  <span class="dropdown-user-email" id="dropdown-user-email">user@email.com</span>
+                </div>
+                <button id="dash-nav-btn" class="dropdown-item">📊 Dashboard</button>
+                <button id="logout-btn" class="dropdown-item logout-item">🚪 Sign Out</button>
+              </div>
+            </div>
+            
+            <!-- Dark Mode Toggle Button -->
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+              <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+            
+            <a href="#explore" id="nav-start-btn" class="cta-button start-exploration-btn">Start Exploration</a>
+            
+            <!-- Hamburger menu for mobile -->
+          <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Mobile dropdown navigation -->
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#dataset" class="mobile-link">Dataset</a>
+      <a href="#workflow" class="mobile-link">Workflow</a>
+      <a href="#classification" class="mobile-link">Classification</a>
+      <a href="#analytics" class="mobile-link">Analytics</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- HERO SECTION                                       -->
+    <!-- ================================================== -->
+    <section id="home" class="hero-section">
+      <div class="container hero-grid">
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="badge-wrapper reveal-slide-up">
+            <span class="project-badge">DecodeLabs Artificial Intelligence Project 2</span>
+          </div>
+          
+          <h1 class="hero-title reveal-slide-up">
+            FLORAMIND <span class="gradient-text">AI</span>
+          </h1>
+          
+          <h2 class="hero-subtitle reveal-slide-up">
+            Where Artificial Intelligence Meets Botanical Intelligence
+          </h2>
+          
+          <p class="hero-desc reveal-slide-up">
+            A next-generation machine learning platform designed to classify Iris flower species through intelligent pattern recognition and supervised learning.
+          </p>
+          
+          <!-- Animated rotating keywords slider -->
+          <div class="keyword-slider-container reveal-slide-up">
+            <span class="keyword-label">Harnessing neural intelligence to</span>
+            <div class="keyword-box">
+              <span class="keyword active">Classify</span>
+              <span class="keyword">Analyze</span>
+              <span class="keyword">Predict</span>
+              <span class="keyword">Discover</span>
+              <span class="keyword">Learn</span>
+            </div>
+            <span class="keyword-suffix">botanical features.</span>
+          </div>
+          
+          <div class="hero-buttons reveal-slide-up">
+            <a href="#about" class="btn btn-secondary">Explore Project</a>
+            <a href="#explore" id="hero-start-btn" class="btn btn-primary start-exploration-btn">Start Exploration</a>
+          </div>
+        </div>
+        
+        <!-- Right Hero Interactive Holographic Canvas -->
+        <div class="hero-interactive reveal-scale">
+          <div class="holo-stage-wrapper">
+            <div class="holo-glow-radial"></div>
+            <canvas id="holo-canvas" width="600" height="600"></canvas>
+            <div class="holo-ui-ring ring-1"></div>
+            <div class="holo-ui-ring ring-2"></div>
+            <div class="holo-ui-coordinates">
+              <span id="holo-coord-x">X: 0.00</span>
+              <span id="holo-coord-y">Y: 0.00</span>
+              <span id="holo-coord-z">ROT: 0.00°</span>
+            </div>
+            <div class="holo-status-indicator">
+              <span class="pulse-dot"></span> HOLOGRAPHIC DIMS ACTIVE
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- STATUS TERMINAL & STATS STRIP                      -->
+    <!-- ================================================== -->
+    <section class="status-stats-section">
+      <div class="container">
+        
+        <!-- AI Startup Status Terminal Panel -->
+        <div class="status-terminal-panel reveal-slide-up">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <div class="terminal-title">floramind-classification-engine.sh</div>
+            <div class="terminal-sync"><span class="sync-icon">⚡</span> SYNCED</div>
+          </div>
+          <div class="terminal-body">
+            <div id="terminal-content"></div>
+            <span class="terminal-cursor"></span>
+          </div>
+        </div>
+        
+        <!-- Hero Stats Strip -->
+        <div class="stats-strip-grid">
+          <div class="stat-card reveal-card-glow" data-delay="0">
+            <div class="stat-icon">📊</div>
+            <div class="stat-value" id="count-samples">0</div>
+            <div class="stat-label">Iris Samples Database</div>
+            <div class="stat-bar"><div class="bar-fill" style="width: 100%"></div></div>
+          </div>
+          
+          <div class="stat-card reveal-card-glow" data-delay="1">
+            <div class="stat-icon">🌸</div>
+            <div class="stat-value" id="count-species">0</div>
+            <div class="stat-label">Target Species Classified</div>
+            <div class="stat-bar"><div class="bar-fill" style="width: 100%"></div></div>
+          </div>
+          
+          <div class="stat-card reveal-card-glow" data-delay="2">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-value" id="count-accuracy">0%</div>
+            <div class="stat-label">Prediction Accuracy Rate</div>
+            <div class="stat-bar"><div class="bar-fill" style="width: 96%"></div></div>
+          </div>
+          
+          <div class="stat-card reveal-card-glow" data-delay="3">
+            <div class="stat-icon">🌿</div>
+            <div class="stat-value">Decision Tree</div>
+            <div class="stat-label">Supervised Algorithm</div>
+            <div class="stat-bar"><div class="bar-fill" style="width: 100%"></div></div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- ABOUT SECTION                                      -->
+    <!-- ================================================== -->
+    <section id="about" class="about-section scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">BOTANICAL SYNAPSE</span>
+          <h2 class="section-title">Fusing Organic Life With Neural Logic</h2>
+          <p class="section-subtitle">FloraMind AI bridges the gap between classic botanical research and modern deep neural computation, introducing algorithmic clarity to structural biology.</p>
+        </div>
+        
+        <div class="about-grid">
+          <!-- Glass Card 1 -->
+          <div class="glass-feature-card reveal-card">
+            <div class="feature-icon-wrapper cyan-glow">
+              <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3>Supervised Machine Learning</h3>
+            <p>Leveraging recursive partitions and decision tree boundaries to parse botanical inputs, identifying non-linear patterns within mathematical dimensions.</p>
+            <div class="card-glow-bg"></div>
+          </div>
+
+          <!-- Glass Card 2 -->
+          <div class="glass-feature-card reveal-card">
+            <div class="feature-icon-wrapper purple-glow">
+              <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            </div>
+            <h3>Feature Engineering</h3>
+            <p>Direct mapping of morphological indicators, extracting critical ratios between sepal and petal geometries to generate precise biological fingerprints.</p>
+            <div class="card-glow-bg"></div>
+          </div>
+
+          <!-- Glass Card 3 -->
+          <div class="glass-feature-card reveal-card">
+            <div class="feature-icon-wrapper pink-glow">
+              <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3>High-Fidelity Prediction</h3>
+            <p>Providing visual probability modeling, allowing researchers to explore multi-dimensional boundaries with mathematically proven classification nodes.</p>
+            <div class="card-glow-bg"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- DATASET EXPLORATION SECTION                        -->
+    <!-- ================================================== -->
+    <section id="dataset" class="dataset-section scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">iris archive</span>
+          <h2 class="section-title">The Foundations of Classification</h2>
+          <p class="section-subtitle">Based on Sir Ronald Fisher's historic 1936 biological dataset, containing measurements of three distinct subspecies of the Iris flower.</p>
+        </div>
+        
+        <div class="dataset-viewer-grid">
+          <!-- Left: Specimen selector & detail view -->
+          <div class="specimen-gallery reveal-card">
+            <h3 class="panel-subtitle">Subspecies Archive</h3>
+            <div class="specimen-selector">
+              <button class="specimen-tab active" data-species="setosa">
+                <span class="specimen-indicator setosa-bg"></span>
+                <div class="specimen-tab-meta">
+                  <h4>Iris Setosa</h4>
+                  <p>Compact & Distinct</p>
+                </div>
+              </button>
+              
+              <button class="specimen-tab" data-species="versicolor">
+                <span class="specimen-indicator versicolor-bg"></span>
+                <div class="specimen-tab-meta">
+                  <h4>Iris Versicolor</h4>
+                  <p>Intermediate Geometry</p>
+                </div>
+              </button>
+              
+              <button class="specimen-tab" data-species="virginica">
+                <span class="specimen-indicator virginica-bg"></span>
+                <div class="specimen-tab-meta">
+                  <h4>Iris Virginica</h4>
+                  <p>Robust & Elongated</p>
+                </div>
+              </button>
+            </div>
+            
+            <!-- Dynamic info card for active specimen -->
+            <div class="specimen-info-display">
+              <div id="specimen-setosa-info" class="specimen-detail-card active">
+                <div class="specimen-visualizer setosa-theme">
+                  <div class="flower-wireframe">
+                    <span class="wire-petal vertical"></span>
+                    <span class="wire-petal horizontal"></span>
+                    <span class="wire-petal diagonal-1"></span>
+                    <span class="wire-petal diagonal-2"></span>
+                    <div class="wire-core"></div>
+                  </div>
+                </div>
+                <div class="specimen-details">
+                  <h4>Setosa Diagnostics</h4>
+                  <p>Characterized by small, narrow petals and wide sepals. Setosa specimens form a completely linear-separable cluster from the other two species, making them highly recognizable.</p>
+                  <ul class="specimen-stats">
+                    <li><span>Sepal Length Avg:</span> <strong>5.0 cm</strong></li>
+                    <li><span>Sepal Width Avg:</span> <strong>3.4 cm</strong></li>
+                    <li><span>Petal Length Avg:</span> <strong>1.5 cm</strong></li>
+                    <li><span>Petal Width Avg:</span> <strong>0.2 cm</strong></li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div id="specimen-versicolor-info" class="specimen-detail-card">
+                <div class="specimen-visualizer versicolor-theme">
+                  <div class="flower-wireframe">
+                    <span class="wire-petal vertical"></span>
+                    <span class="wire-petal horizontal"></span>
+                    <span class="wire-petal diagonal-1"></span>
+                    <span class="wire-petal diagonal-2"></span>
+                    <div class="wire-core"></div>
+                  </div>
+                </div>
+                <div class="specimen-details">
+                  <h4>Versicolor Diagnostics</h4>
+                  <p>Features intermediate petal lengths and widths. Versicolor forms a cluster that is mathematically adjacent to Virginica, representing a classic optimization boundary for classifiers.</p>
+                  <ul class="specimen-stats">
+                    <li><span>Sepal Length Avg:</span> <strong>5.9 cm</strong></li>
+                    <li><span>Sepal Width Avg:</span> <strong>2.7 cm</strong></li>
+                    <li><span>Petal Length Avg:</span> <strong>4.2 cm</strong></li>
+                    <li><span>Petal Width Avg:</span> <strong>1.3 cm</strong></li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div id="specimen-virginica-info" class="specimen-detail-card">
+                <div class="specimen-visualizer virginica-theme">
+                  <div class="flower-wireframe">
+                    <span class="wire-petal vertical"></span>
+                    <span class="wire-petal horizontal"></span>
+                    <span class="wire-petal diagonal-1"></span>
+                    <span class="wire-petal diagonal-2"></span>
+                    <div class="wire-core"></div>
+                  </div>
+                </div>
+                <div class="specimen-details">
+                  <h4>Virginica Diagnostics</h4>
+                  <p>Distinguished by its robust growth, large petals, and long sepals. The feature boundary overlapping Versicolor requires multi-layer thresholds to classify with absolute precision.</p>
+                  <ul class="specimen-stats">
+                    <li><span>Sepal Length Avg:</span> <strong>6.6 cm</strong></li>
+                    <li><span>Sepal Width Avg:</span> <strong>2.9 cm</strong></li>
+                    <li><span>Petal Length Avg:</span> <strong>5.5 cm</strong></li>
+                    <li><span>Petal Width Avg:</span> <strong>2.0 cm</strong></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right: Visual dataset statistics and distribution charts -->
+          <div class="dataset-visualizer-panel reveal-card">
+            <h3 class="panel-subtitle">Dimensional Distribution</h3>
+            
+            <div class="distribution-bars">
+              <div class="dist-group">
+                <div class="dist-header">
+                  <span>Petal Length Range (cm)</span>
+                  <span>1.0 - 6.9 cm</span>
+                </div>
+                <div class="dist-range-bar">
+                  <span class="segment setosa" style="left: 0%; width: 15%;">Setosa (1.0-1.9)</span>
+                  <span class="segment versicolor" style="left: 30%; width: 35%;">Versicolor (3.0-5.1)</span>
+                  <span class="segment virginica" style="left: 55%; width: 40%;">Virginica (4.5-6.9)</span>
+                </div>
+              </div>
+              
+              <div class="dist-group">
+                <div class="dist-header">
+                  <span>Petal Width Range (cm)</span>
+                  <span>0.1 - 2.5 cm</span>
+                </div>
+                <div class="dist-range-bar">
+                  <span class="segment setosa" style="left: 0%; width: 20%;">Setosa (0.1-0.6)</span>
+                  <span class="segment versicolor" style="left: 36%; width: 35%;">Versicolor (1.0-1.8)</span>
+                  <span class="segment virginica" style="left: 52%; width: 45%;">Virginica (1.4-2.5)</span>
+                </div>
+              </div>
+
+              <div class="dist-group">
+                <div class="dist-header">
+                  <span>Sepal Width Range (cm)</span>
+                  <span>2.0 - 4.4 cm</span>
+                </div>
+                <div class="dist-range-bar">
+                  <span class="segment versicolor" style="left: 0%; width: 55%;">Versicolor (2.0-3.4)</span>
+                  <span class="segment virginica" style="left: 8%; width: 60%;">Virginica (2.2-3.8)</span>
+                  <span class="segment setosa" style="left: 12%; width: 75%;">Setosa (2.3-4.4)</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="distribution-scatter">
+              <div class="scatter-header">
+                <span>Petal Width vs Petal Length Mapping</span>
+              </div>
+              <div class="scatter-plot-placeholder">
+                <svg viewBox="0 0 100 100" class="scatter-svg">
+                  <!-- Axes -->
+                  <line x1="10" y1="90" x2="95" y2="90" class="axis-line" />
+                  <line x1="10" y1="90" x2="10" y2="10" class="axis-line" />
+                  
+                  <!-- Setosa dots -->
+                  <circle cx="18" cy="82" r="2.5" class="dot setosa-dot" />
+                  <circle cx="20" cy="80" r="2.5" class="dot setosa-dot" />
+                  <circle cx="22" cy="78" r="2.5" class="dot setosa-dot" />
+                  <circle cx="16" cy="79" r="2.5" class="dot setosa-dot" />
+                  <circle cx="25" cy="81" r="2.5" class="dot setosa-dot" />
+                  
+                  <!-- Versicolor dots -->
+                  <circle cx="50" cy="54" r="2.5" class="dot versicolor-dot" />
+                  <circle cx="55" cy="50" r="2.5" class="dot versicolor-dot" />
+                  <circle cx="62" cy="45" r="2.5" class="dot versicolor-dot" />
+                  <circle cx="48" cy="58" r="2.5" class="dot versicolor-dot" />
+                  <circle cx="58" cy="48" r="2.5" class="dot versicolor-dot" />
+                  
+                  <!-- Virginica dots -->
+                  <circle cx="70" cy="30" r="2.5" class="dot virginica-dot" />
+                  <circle cx="78" cy="22" r="2.5" class="dot virginica-dot" />
+                  <circle cx="65" cy="38" r="2.5" class="dot virginica-dot" />
+                  <circle cx="82" cy="25" r="2.5" class="dot virginica-dot" />
+                  <circle cx="75" cy="28" r="2.5" class="dot virginica-dot" />
+                  
+                  <!-- Decisive boundary line -->
+                  <line x1="38" y1="90" x2="38" y2="10" class="boundary-line sep-line" />
+                  <text x="32" y="20" class="scatter-label">Boundary</text>
+                </svg>
+                <div class="scatter-legend">
+                  <span class="legend-item"><span class="legend-color setosa-bg"></span> Setosa</span>
+                  <span class="legend-item"><span class="legend-color versicolor-bg"></span> Versicolor</span>
+                  <span class="legend-item"><span class="legend-color virginica-bg"></span> Virginica</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- WORKFLOW PIPELINE SECTION                          -->
+    <!-- ================================================== -->
+    <section id="workflow" class="workflow-section scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">execution logic</span>
+          <h2 class="section-title">Algorithmic Lifecycle</h2>
+          <p class="section-subtitle">How raw botanical data is parsed, analyzed, and integrated into our real-time prediction model.</p>
+        </div>
+        
+        <div class="workflow-steps-container">
+          <div class="workflow-line"></div>
+          
+          <div class="workflow-step reveal-slide-up" data-step="1">
+            <div class="step-num-bubble">01</div>
+            <div class="step-card">
+              <h4>Morphological Scanning</h4>
+              <p>Physical measurement inputs (Sepal Length, Sepal Width, Petal Length, Petal Width) are converted into structured biological matrices.</p>
+              <span class="step-glow-tag">Data Ingest</span>
+            </div>
+          </div>
+          
+          <div class="workflow-step reveal-slide-up" data-step="2">
+            <div class="step-num-bubble">02</div>
+            <div class="step-card">
+              <h4>Dimensional Reduction</h4>
+              <p>Features are weighted to evaluate variance. The system extracts sepal-to-petal geometric ratios, optimizing separation metrics.</p>
+              <span class="step-glow-tag">Processing</span>
+            </div>
+          </div>
+          
+          <div class="workflow-step reveal-slide-up" data-step="3">
+            <div class="step-num-bubble">03</div>
+            <div class="step-card">
+              <h4>Decision Tree Splitting</h4>
+              <p>Input attributes traverse trained binary branches. Entropy and Information Gain criteria partition the multi-dimensional dataset.</p>
+              <span class="step-glow-tag">ML Modeling</span>
+            </div>
+          </div>
+          
+          <div class="workflow-step reveal-slide-up" data-step="4">
+            <div class="step-num-bubble">04</div>
+            <div class="step-card">
+              <h4>Species Identification</h4>
+              <p>The system outputs the classified species with a computed probability value and presents morphological reports.</p>
+              <span class="step-glow-tag">Classification</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- BOTANICAL INTELLIGENCE CLASSIFIER (SANDBOX)        -->
+    <!-- ================================================== -->
+    <section id="classification" class="sandbox-section scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">interactive logic</span>
+          <h2 class="section-title">Botanical Classifier Sandbox</h2>
+          <p class="section-subtitle">Adjust the morphological sliders in real-time to traverse the decision boundary paths and observe live classification outcomes.</p>
+        </div>
+        
+        <div class="sandbox-grid">
+          
+          <!-- Left: Sliders Panel -->
+          <div class="sliders-panel reveal-card">
+            <h3>Morphoneural Attributes</h3>
+            <p class="sliders-instructions">Modify these 4 botanical measurements to trigger classification.</p>
+            
+            <div class="slider-group">
+              <div class="slider-header">
+                <label for="slide-sepal-len">Sepal Length (cm)</label>
+                <span id="val-sepal-len" class="slider-val">5.8</span>
+              </div>
+              <input type="range" id="slide-sepal-len" class="range-slider" min="4.0" max="8.0" step="0.1" value="5.8">
+              <div class="slider-bounds"><span>4.0 cm</span><span>8.0 cm</span></div>
+            </div>
+            
+            <div class="slider-group">
+              <div class="slider-header">
+                <label for="slide-sepal-wid">Sepal Width (cm)</label>
+                <span id="val-sepal-wid" class="slider-val">3.0</span>
+              </div>
+              <input type="range" id="slide-sepal-wid" class="range-slider" min="2.0" max="4.5" step="0.1" value="3.0">
+              <div class="slider-bounds"><span>2.0 cm</span><span>4.5 cm</span></div>
+            </div>
+            
+            <div class="slider-group">
+              <div class="slider-header">
+                <label for="slide-petal-len">Petal Length (cm)</label>
+                <span id="val-petal-len" class="slider-val">3.8</span>
+              </div>
+              <input type="range" id="slide-petal-len" class="range-slider" min="1.0" max="7.0" step="0.1" value="3.8">
+              <div class="slider-bounds"><span>1.0 cm</span><span>7.0 cm</span></div>
+            </div>
+            
+            <div class="slider-group">
+              <div class="slider-header">
+                <label for="slide-petal-wid">Petal Width (cm)</label>
+                <span id="val-petal-wid" class="slider-val">1.2</span>
+              </div>
+              <input type="range" id="slide-petal-wid" class="range-slider" min="0.1" max="2.5" step="0.1" value="1.2">
+              <div class="slider-bounds"><span>0.1 cm</span><span>2.5 cm</span></div>
+            </div>
+            
+            <div class="slider-presets">
+              <span class="preset-label">Standard Presets:</span>
+              <button class="preset-btn" data-preset="5.0,3.4,1.5,0.2">Setosa</button>
+              <button class="preset-btn" data-preset="5.9,2.7,4.2,1.3">Versicolor</button>
+              <button class="preset-btn" data-preset="6.5,3.0,5.5,2.0">Virginica</button>
+            </div>
+          </div>
+          
+          <!-- Middle: Visual Decision Tree traversal -->
+          <div class="decision-tree-panel reveal-card">
+            <h3>Active Model Logic Path</h3>
+            <p class="tree-instructions">Watch the binary nodes switch states in response to your input values.</p>
+            
+            <div class="tree-container">
+              <svg viewBox="0 0 400 320" class="tree-svg" id="tree-svg-diagram">
+                <!-- SVG lines connecting the nodes -->
+                <line x1="200" y1="40" x2="100" y2="120" class="tree-connector" id="con-root-l" />
+                <line x1="200" y1="40" x2="300" y2="120" class="tree-connector" id="con-root-r" />
+                
+                <line x1="300" y1="120" x2="240" y2="200" class="tree-connector" id="con-node2-l" />
+                <line x1="300" y1="120" x2="360" y2="200" class="tree-connector" id="con-node2-r" />
+                
+                <line x1="240" y1="200" x2="200" y2="280" class="tree-connector" id="con-node3-l" />
+                <line x1="240" y1="200" x2="270" y2="280" class="tree-connector" id="con-node3-r" />
+                
+                <!-- Root Node -->
+                <g class="tree-node" id="node-root" transform="translate(200,40)">
+                  <circle r="22" class="node-circle" />
+                  <text y="5" class="node-text">Petal L &lt; 2.45</text>
+                </g>
+                
+                <!-- Level 1 Left (Setosa Leaf) -->
+                <g class="tree-node leaf-node setosa-leaf" id="node-setosa" transform="translate(100,120)">
+                  <circle r="20" class="node-circle" />
+                  <text y="5" class="node-text">Setosa</text>
+                </g>
+                
+                <!-- Level 1 Right (Branch Node) -->
+                <g class="tree-node" id="node-right-branch" transform="translate(300,120)">
+                  <circle r="22" class="node-circle" />
+                  <text y="5" class="node-text">Petal W &lt; 1.75</text>
+                </g>
+                
+                <!-- Level 2 Left (Petal Length Node) -->
+                <g class="tree-node" id="node-petal-len-branch" transform="translate(240,200)">
+                  <circle r="22" class="node-circle" />
+                  <text y="5" class="node-text">Petal L &lt; 4.95</text>
+                </g>
+                
+                <!-- Level 2 Right (Virginica Leaf) -->
+                <g class="tree-node leaf-node virginica-leaf" id="node-virginica-direct" transform="translate(360,200)">
+                  <circle r="20" class="node-circle" />
+                  <text y="5" class="node-text">Virginica</text>
+                </g>
+                
+                <!-- Level 3 Left (Versicolor Leaf) -->
+                <g class="tree-node leaf-node versicolor-leaf" id="node-versicolor-final" transform="translate(200,280)">
+                  <circle r="20" class="node-circle" />
+                  <text y="5" class="node-text">Versicolor</text>
+                </g>
+                
+                <!-- Level 3 Right (Virginica Final Leaf) -->
+                <g class="tree-node leaf-node virginica-leaf" id="node-virginica-final" transform="translate(270,280)">
+                  <circle r="20" class="node-circle" />
+                  <text y="5" class="node-text">Virginica</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- Right: Classification Outcome Card -->
+          <div class="outcome-panel reveal-card">
+            <h3>Classification Outcome</h3>
+            
+            <div class="result-display-wrapper">
+              <div class="result-visual-ring">
+                <div class="radar-scan"></div>
+                <div class="outcome-avatar" id="outcome-symbol">🔬</div>
+              </div>
+              
+              <div class="outcome-data">
+                <span class="outcome-tag">PREDICTED SPECIES</span>
+                <h2 id="prediction-title" class="outcome-name">Awaiting Input...</h2>
+                <div class="probability-container">
+                  <div class="probability-label">Classifier Confidence</div>
+                  <div class="probability-bar-track">
+                    <div id="confidence-bar" class="probability-bar-fill" style="width: 0%"></div>
+                  </div>
+                  <div id="confidence-text" class="probability-pct">--</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="classification-log-panel">
+              <div class="log-title">Morphological Audit Trail</div>
+              <div class="log-rows" id="audit-trail-logs">
+                <!-- Loaded dynamically by Javascript -->
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- ANALYTICS SECTION                                  -->
+    <!-- ================================================== -->
+    <section id="analytics" class="analytics-section scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">platform analytics</span>
+          <h2 class="section-title">Model Performance & Analytics</h2>
+          <p class="section-subtitle">A high-fidelity analysis of model training parameters, feature importance factors, and confusion matrices.</p>
+        </div>
+        
+        <div class="analytics-grid">
+          <!-- Feature Importance Chart -->
+          <div class="chart-glass-card reveal-card">
+            <h4>Feature Importance Weighting</h4>
+            <p class="chart-desc">Variance ratio of each morphological feature during recursive partitioning.</p>
+            
+            <div class="feature-importance-bars">
+              <div class="f-bar-group">
+                <div class="f-bar-labels">
+                  <span>Petal Width</span>
+                  <strong>54.2%</strong>
+                </div>
+                <div class="f-bar-track">
+                  <div class="f-bar-fill fill-cyan" style="width: 54.2%"></div>
+                </div>
+              </div>
+              
+              <div class="f-bar-group">
+                <div class="f-bar-labels">
+                  <span>Petal Length</span>
+                  <strong>38.1%</strong>
+                </div>
+                <div class="f-bar-track">
+                  <div class="f-bar-fill fill-purple" style="width: 38.1%"></div>
+                </div>
+              </div>
+              
+              <div class="f-bar-group">
+                <div class="f-bar-labels">
+                  <span>Sepal Length</span>
+                  <strong>5.8%</strong>
+                </div>
+                <div class="f-bar-track">
+                  <div class="f-bar-fill fill-pink" style="width: 5.8%"></div>
+                </div>
+              </div>
+              
+              <div class="f-bar-group">
+                <div class="f-bar-labels">
+                  <span>Sepal Width</span>
+                  <strong>1.9%</strong>
+                </div>
+                <div class="f-bar-track">
+                  <div class="f-bar-fill fill-emerald" style="width: 1.9%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Confusion Matrix Card -->
+          <div class="chart-glass-card reveal-card">
+            <h4>Supervised Confusion Matrix</h4>
+            <p class="chart-desc">Hold-out set classification results mapping predicted vs actual labels.</p>
+            
+            <div class="confusion-matrix-wrapper">
+              <div class="confusion-matrix-grid">
+                <!-- Column labels -->
+                <div class="matrix-cell label-cell"></div>
+                <div class="matrix-cell label-cell">Setosa (P)</div>
+                <div class="matrix-cell label-cell">Versicolor (P)</div>
+                <div class="matrix-cell label-cell">Virginica (P)</div>
+                
+                <!-- Row 1 -->
+                <div class="matrix-cell label-cell y-label">Setosa (A)</div>
+                <div class="matrix-cell data-cell hits">15 <span class="cell-sub">100%</span></div>
+                <div class="matrix-cell data-cell">0 <span class="cell-sub">0%</span></div>
+                <div class="matrix-cell data-cell">0 <span class="cell-sub">0%</span></div>
+                
+                <!-- Row 2 -->
+                <div class="matrix-cell label-cell y-label">Versi (A)</div>
+                <div class="matrix-cell data-cell">0 <span class="cell-sub">0%</span></div>
+                <div class="matrix-cell data-cell hits">14 <span class="cell-sub">93.3%</span></div>
+                <div class="matrix-cell data-cell miss">1 <span class="cell-sub">6.7%</span></div>
+                
+                <!-- Row 3 -->
+                <div class="matrix-cell label-cell y-label">Virgin (A)</div>
+                <div class="matrix-cell data-cell">0 <span class="cell-sub">0%</span></div>
+                <div class="matrix-cell data-cell miss">1 <span class="cell-sub">6.7%</span></div>
+                <div class="matrix-cell data-cell hits">14 <span class="cell-sub">93.3%</span></div>
+              </div>
+            </div>
+            
+            <div class="matrix-legend">
+              <span class="legend-dot hit-dot"></span> True Positives (Hits)
+              <span class="legend-dot miss-dot"></span> Classification Errors (Misses)
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- CONTACT SECTION                                    -->
+    <!-- ================================================== -->
+    <section id="contact" class="contact-section scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">neural gateway</span>
+          <h2 class="section-title">Connect With DecodeLabs</h2>
+          <p class="section-subtitle">Reach out to learn more about the machine learning architectures of Project 2.</p>
+        </div>
+        
+        <div class="contact-card-wrapper reveal-card">
+          <div class="contact-card-glow"></div>
+          
+          <form class="futuristic-contact-form" id="contact-form">
+            <div class="form-row-two">
+              <div class="input-group">
+                <input type="text" id="form-name" required placeholder=" ">
+                <label for="form-name">Researcher Name</label>
+                <div class="input-line"></div>
+              </div>
+              
+              <div class="input-group">
+                <input type="email" id="form-email" required placeholder=" ">
+                <label for="form-email">Scientific Institution Email</label>
+                <div class="input-line"></div>
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <input type="text" id="form-subject" required placeholder=" ">
+              <label for="form-subject">Inquiry Subject</label>
+              <div class="input-line"></div>
+            </div>
+            
+            <div class="input-group">
+              <textarea id="form-message" required placeholder=" " rows="4"></textarea>
+              <label for="form-message">Botanical Research Application details...</label>
+              <div class="input-line"></div>
+            </div>
+            
+            <div class="form-action-wrapper">
+              <button type="submit" class="submit-btn">
+                <span>ESTABLISH LINK</span>
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+          </form>
+          
+          <div id="form-feedback-overlay" class="form-feedback-overlay">
+            <div class="feedback-inner">
+              <div class="feedback-icon">✓</div>
+              <h3>Transmission Completed</h3>
+              <p class="feedback-subtitle-text">Your connection to DecodeLabs has been established successfully.</p>
+              
+              <div class="receipt-card">
+                <div class="receipt-row">
+                  <span class="receipt-label">Researcher</span>
+                  <span class="receipt-value" id="receipt-name">--</span>
+                </div>
+                <div class="receipt-row">
+                  <span class="receipt-label">Secure Channel</span>
+                  <span class="receipt-value" id="receipt-email">--</span>
+                </div>
+                <div class="receipt-row">
+                  <span class="receipt-label">Topic</span>
+                  <span class="receipt-value" id="receipt-subject">--</span>
+                </div>
+                <div class="receipt-row message-row">
+                  <span class="receipt-label">Payload Message</span>
+                  <p class="receipt-value-text" id="receipt-message">--</p>
+                </div>
+                <div class="receipt-row">
+                  <span class="receipt-label">Sync Ref ID</span>
+                  <span class="receipt-value accent-text" id="sync-ref-id">FLM-88910</span>
+                </div>
+              </div>
+              
+              <button id="close-feedback-btn" class="preset-btn">Back to terminal</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- FOOTER                                             -->
+    <!-- ================================================== -->
+    <footer class="main-footer">
+      <div class="container footer-grid">
+        <div class="footer-branding">
+          <div class="mini-logo">
+            <svg viewBox="0 0 100 100" width="28" height="28">
+              <circle cx="50" cy="50" r="8" class="mini-core" />
+              <path d="M50,42 C50,26 43,18 50,8 C57,18 50,26 50,42 Z" class="mini-petal" />
+              <path d="M50,58 C50,74 43,82 50,92 C57,82 50,74 50,58 Z" class="mini-petal" />
+            </svg>
+          </div>
+          <span class="logo-text">FLORAMIND <span class="accent-text">AI</span></span>
+          <p class="footer-tagline">Fusing Artificial Intelligence with Botanical Intelligence.</p>
+        </div>
+        
+        <div class="footer-links-column">
+          <h5>Navigation</h5>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#dataset">Dataset</a>
+          <a href="#workflow">Workflow</a>
+        </div>
+        
+        <div class="footer-links-column">
+          <h5>Interactive</h5>
+          <a href="#classification">Classifier Sandbox</a>
+          <a href="#analytics">Model Performance</a>
+          <a href="#contact">Contact Portal</a>
+        </div>
+        
+        <div class="footer-links-column">
+          <h5>Project Info</h5>
+          <p class="project-info-text">DecodeLabs AI Project 2</p>
+          <p class="project-info-text">Supervised Decision Boundary Modeling</p>
+          <p class="project-info-text">June 2026</p>
+        </div>
+      </div>
+      
+      <div class="container footer-bottom">
+        <p class="copyright">&copy; 2026 FloraMind AI. Built for DecodeLabs Artificial Intelligence Project 2. All rights reserved.</p>
+        <div class="footer-status-tag">
+          <span class="status-indicator-green"></span> CLASSIFIER ENGINE ONLINE
+        </div>
+      </div>
+    </footer>
+    </div> <!-- /#landing-view -->
+
+    <!-- ================================================== -->
+    <!-- MAIN AI LABORATORY PAGE                            -->
+    <!-- ================================================== -->
+    <div id="ai-lab-view" class="inactive-view">
+      <div class="lab-window-container">
+        <!-- Glowing background elements specific to lab -->
+        <div class="lab-aurora-glow">
+          <div class="lab-orb lab-orb-cyan"></div>
+          <div class="lab-orb lab-orb-purple"></div>
+          <div class="lab-orb lab-orb-pink"></div>
+        </div>
+        
+        <div class="lab-window">
+          <!-- Windows Titlebar -->
+          <div class="lab-titlebar">
+            <div class="titlebar-left">
+              <span class="lab-app-icon">🔬</span>
+              <span class="titlebar-title">FloraMind AI Laboratory Workbench - DecodeLabs Project 2</span>
+            </div>
+            <div class="titlebar-center">
+              <span class="status-indicator-dot online"></span>
+              <span class="titlebar-status">AI ENGINE ONLINE & SYNCED</span>
+            </div>
+            <div class="titlebar-right">
+              <button class="win-btn win-min" aria-label="Minimize">&#9472;</button>
+              <button class="win-btn win-max" aria-label="Maximize">&#9633;</button>
+              <button class="win-btn win-close" id="lab-close-btn" aria-label="Close">&#215;</button>
+            </div>
+          </div>
+          
+          <!-- App Body -->
+          <div class="lab-body">
+            <!-- Sidebar -->
+            <aside class="lab-sidebar">
+              <div class="sidebar-header">
+                <div class="mini-logo">
+                  <svg viewBox="0 0 100 100" width="24" height="24">
+                    <circle cx="50" cy="50" r="8" class="mini-core" fill="currentColor" />
+                    <path d="M50,42 C50,26 43,18 50,8 C57,18 50,26 50,42 Z" class="mini-petal" stroke="currentColor" fill="none" stroke-width="2" />
+                    <path d="M50,58 C50,74 43,82 50,92 C57,82 50,74 50,58 Z" class="mini-petal" stroke="currentColor" fill="none" stroke-width="2" />
+                  </svg>
+                </div>
+                <span>FLORAMIND <span class="accent-text">AI</span></span>
+              </div>
+              <nav class="sidebar-menu">
+                <button class="sidebar-link active" data-tab="tab-sandbox">
+                  <span class="link-icon">⚙️</span>
+                  <span class="link-text">Classification Lab</span>
+                </button>
+                <button class="sidebar-link" data-tab="tab-database">
+                  <span class="link-icon">📚</span>
+                  <span class="link-text">Species Explorer</span>
+                </button>
+                <button class="sidebar-link" data-tab="tab-diagnostics">
+                  <span class="link-icon">📊</span>
+                  <span class="link-text">Model Workflow</span>
+                </button>
+              </nav>
+              <div class="sidebar-footer">
+                <div class="project-tag">DecodeLabs AI Project 2</div>
+                <div class="version-tag">Build v2.0.1</div>
+              </div>
+            </aside>
+            
+            <!-- Workspace area -->
+            <main class="lab-workspace">
+              
+              <!-- Tab 1: Sandbox (Classification Lab + Prediction Results + Breakdown + History) -->
+              <section id="tab-sandbox" class="tab-pane active">
+                <!-- 1. Welcome Panel -->
+                <div class="lab-welcome-panel animate-panel">
+                  <div class="welcome-glow"></div>
+                  <div class="welcome-header">
+                    <span class="lab-status-badge"><span class="pulse-dot-green"></span> AI Classification System Online</span>
+                    <h1 class="lab-title">FloraMind Intelligence Engine</h1>
+                    <p class="lab-subtitle">Machine Learning Powered Iris Flower Classification System</p>
+                  </div>
+                </div>
+                
+                <div class="sandbox-workspace-grid">
+                  <!-- 4. Classification Lab (Core Section) -->
+                  <div class="lab-card controls-card">
+                    <div class="card-header">
+                      <h3>Classification Lab</h3>
+                      <span class="card-subtitle">Tune botanical features to run live model classification.</span>
+                    </div>
+                    <div class="card-body">
+                      <!-- 7. Quick Test Samples -->
+                      <div class="lab-presets-wrapper">
+                        <span class="presets-title">Quick Test Samples (One-click Loading):</span>
+                        <div class="presets-row">
+                          <button class="lab-preset-btn" data-values="5.1,3.5,1.4,0.2">Sample 1 (Setosa)</button>
+                          <button class="lab-preset-btn" data-values="5.0,3.4,1.5,0.2">Sample 1b (Setosa)</button>
+                          <button class="lab-preset-btn" data-values="6.0,2.9,4.5,1.5">Sample 2 (Versicolor)</button>
+                          <button class="lab-preset-btn" data-values="6.4,2.8,4.7,1.2">Sample 2b (Versicolor)</button>
+                          <button class="lab-preset-btn" data-values="6.7,3.0,5.2,2.3">Sample 3 (Virginica)</button>
+                          <button class="lab-preset-btn" data-values="6.9,3.1,5.4,2.1">Sample 3b (Virginica)</button>
+                        </div>
+
+                      </div>
+                      
+                      <!-- Input Fields / Sliders -->
+                      <div class="lab-sliders-container">
+                        <div class="lab-slider-group">
+                          <div class="slider-info">
+                            <label for="lab-sepal-len">Sepal Length (cm)</label>
+                            <div class="slider-value-box">
+                              <input type="number" id="num-sepal-len" min="4.0" max="8.0" step="0.1" value="5.8" class="lab-num-input">
+                              <span class="unit">cm</span>
+                            </div>
+                          </div>
+                          <input type="range" id="lab-sepal-len" min="4.0" max="8.0" step="0.1" value="5.8" class="lab-slider">
+                          <div class="slider-limits"><span>4.0 cm</span><span>8.0 cm</span></div>
+                        </div>
+                        
+                        <div class="lab-slider-group">
+                          <div class="slider-info">
+                            <label for="lab-sepal-wid">Sepal Width (cm)</label>
+                            <div class="slider-value-box">
+                              <input type="number" id="num-sepal-wid" min="2.0" max="4.5" step="0.1" value="3.0" class="lab-num-input">
+                              <span class="unit">cm</span>
+                            </div>
+                          </div>
+                          <input type="range" id="lab-sepal-wid" min="2.0" max="4.5" step="0.1" value="3.0" class="lab-slider">
+                          <div class="slider-limits"><span>2.0 cm</span><span>4.5 cm</span></div>
+                        </div>
+                        
+                        <div class="lab-slider-group">
+                          <div class="slider-info">
+                            <label for="lab-petal-len">Petal Length (cm)</label>
+                            <div class="slider-value-box">
+                              <input type="number" id="num-petal-len" min="1.0" max="7.0" step="0.1" value="3.8" class="lab-num-input">
+                              <span class="unit">cm</span>
+                            </div>
+                          </div>
+                          <input type="range" id="lab-petal-len" min="1.0" max="7.0" step="0.1" value="3.8" class="lab-slider">
+                          <div class="slider-limits"><span>1.0 cm</span><span>7.0 cm</span></div>
+                        </div>
+                        
+                        <div class="lab-slider-group">
+                          <div class="slider-info">
+                            <label for="lab-petal-wid">Petal Width (cm)</label>
+                            <div class="slider-value-box">
+                              <input type="number" id="num-petal-wid" min="0.1" max="2.5" step="0.1" value="1.2" class="lab-num-input">
+                              <span class="unit">cm</span>
+                            </div>
+                          </div>
+                          <input type="range" id="lab-petal-wid" min="0.1" max="2.5" step="0.1" value="1.2" class="lab-slider">
+                          <div class="slider-limits"><span>0.1 cm</span><span>2.5 cm</span></div>
+                        </div>
+                      </div>
+                      
+                      <!-- Buttons -->
+                      <div class="lab-actions-row">
+                        <button id="btn-reset-lab" class="lab-btn btn-secondary-lab">Reset</button>
+                        <button id="btn-classify-lab" class="lab-btn btn-primary-lab">Initiate Classification</button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Classification Engine Visualization -->
+                  <div class="lab-card visualizer-card">
+                    <div class="card-header">
+                      <h3>Classification Engine Visualization</h3>
+                      <span class="card-subtitle">Watch floating data particles flow through active decision branches.</span>
+                    </div>
+                    <div class="card-body tree-vis-body">
+                      <div class="visualization-stage">
+                        <!-- Canvas for floating particles and scanning grid -->
+                        <canvas id="lab-particles-canvas"></canvas>
+                        
+                        <!-- Scanning Overlay during prediction -->
+                        <div id="lab-scanning-overlay" class="scanning-overlay">
+                          <div class="scanner-grid"></div>
+                          <div class="scanner-bar"></div>
+                          <span class="scanning-text">Analyzing Botanical Features...</span>
+                        </div>
+                        
+                        <!-- Decision Tree SVG -->
+                        <svg viewBox="0 0 400 320" class="lab-tree-svg" id="lab-tree-svg">
+                          <line x1="200" y1="40" x2="100" y2="120" class="lab-tree-connector" id="lab-con-root-l" />
+                          <line x1="200" y1="40" x2="300" y2="120" class="lab-tree-connector" id="lab-con-root-r" />
+                          
+                          <line x1="300" y1="120" x2="240" y2="200" class="lab-tree-connector" id="lab-con-node2-l" />
+                          <line x1="300" y1="120" x2="360" y2="200" class="lab-tree-connector" id="lab-con-node2-r" />
+                          
+                          <line x1="240" y1="200" x2="180" y2="280" class="lab-tree-connector" id="lab-con-node3-l" />
+                          <line x1="240" y1="200" x2="270" y2="280" class="lab-tree-connector" id="lab-con-node3-r" />
+                          
+                          <!-- Root Node -->
+                          <g class="lab-tree-node" id="lab-node-root" transform="translate(200,40)">
+                            <circle r="18" class="lab-node-circle" />
+                            <text y="5" class="lab-node-text">PL &lt; 2.45</text>
+                          </g>
+                          
+                          <!-- Level 1 Left (Setosa Leaf) -->
+                          <g class="lab-tree-node leaf-node setosa-leaf" id="lab-node-setosa" transform="translate(100,120)">
+                            <circle r="18" class="lab-node-circle" />
+                            <text y="5" class="lab-node-text">Setosa</text>
+                          </g>
+                          
+                          <!-- Level 1 Right (Branch Node) -->
+                          <g class="lab-tree-node" id="lab-node-right-branch" transform="translate(300,120)">
+                            <circle r="18" class="lab-node-circle" />
+                             <text y="5" class="lab-node-text">PW &lt; 1.75</text>
+                          </g>
+                          
+                          <!-- Level 2 Left (Petal Length Node) -->
+                          <g class="lab-tree-node" id="lab-node-petal-len-branch" transform="translate(240,200)">
+                            <circle r="18" class="lab-node-circle" />
+                             <text y="5" class="lab-node-text">PL &lt; 4.95</text>
+                          </g>
+                          
+                          <!-- Level 2 Right (Virginica Leaf) -->
+                          <g class="lab-tree-node leaf-node virginica-leaf" id="lab-node-virginica-direct" transform="translate(360,200)">
+                            <circle r="18" class="lab-node-circle" />
+                            <text y="5" class="lab-node-text">Virginica</text>
+                          </g>
+                          
+                          <!-- Level 3 Left (Versicolor Leaf) -->
+                          <g class="lab-tree-node leaf-node versicolor-leaf" id="lab-node-versicolor-final" transform="translate(180,280)">
+                            <circle r="18" class="lab-node-circle" />
+                            <text y="5" class="lab-node-text">Versi</text>
+                          </g>
+                          
+                          <!-- Level 3 Right (Virginica Final Leaf) -->
+                          <g class="lab-tree-node leaf-node virginica-leaf" id="lab-node-virginica-final" transform="translate(270,280)">
+                            <circle r="18" class="lab-node-circle" />
+                            <text y="5" class="lab-node-text">Virgin</text>
+                          </g>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- 5. Prediction Result Panel -->
+                  <div class="lab-card result-card">
+                    <div class="card-header">
+                      <h3>Prediction Results</h3>
+                      <span class="card-subtitle">Real-time classification outcome.</span>
+                    </div>
+                    <div class="card-body prediction-result-body">
+                      <div class="prediction-outcome-wrapper" id="lab-result-wrapper">
+                        <div class="result-avatar-holder">
+                          <span id="lab-result-emoji" class="result-emoji-anim">🔬</span>
+                        </div>
+                        <div class="result-text-holder">
+                          <span class="detected-label">SPECIES</span>
+                          <h2 id="lab-result-species" class="detected-species">Awaiting Input...</h2>
+                          <span class="confidence-label">CONFIDENCE SCORE: <strong id="lab-result-confidence">--</strong></span>
+                        </div>
+                        <div class="result-flower-illustration">
+                          <img id="lab-result-flower-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='36' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-dasharray='4 4'/%3E%3Ctext x='40' y='45' text-anchor='middle' font-size='28' fill='%2394a3b8'%3E?%3C/text%3E%3C/svg%3E" alt="Classified Iris Subspecies" class="lab-flower-img">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- 6. Probability Breakdown -->
+                  <div class="lab-card probability-card">
+                    <div class="card-header">
+                      <h3>Probability Breakdown</h3>
+                      <span class="card-subtitle">Confidence metrics across target classes.</span>
+                    </div>
+                    <div class="card-body probability-body">
+                          <div class="prob-row">
+                            <div class="prob-meta">
+                              <span class="prob-species">Setosa</span>
+                              <span id="prob-val-setosa" class="prob-percentage">0%</span>
+                            </div>
+                            <div class="prob-progress-track">
+                              <div id="prob-bar-setosa" class="prob-progress-fill setosa-fill" style="width: 0%"></div>
+                            </div>
+                          </div>
+                          
+                          <div class="prob-row">
+                            <div class="prob-meta">
+                              <span class="prob-species">Versicolor</span>
+                              <span id="prob-val-versicolor" class="prob-percentage">0%</span>
+                            </div>
+                            <div class="prob-progress-track">
+                              <div id="prob-bar-versicolor" class="prob-progress-fill versicolor-fill" style="width: 0%"></div>
+                            </div>
+                          </div>
+                          
+                          <div class="prob-row">
+                            <div class="prob-meta">
+                              <span class="prob-species">Virginica</span>
+                              <span id="prob-val-virginica" class="prob-percentage">0%</span>
+                            </div>
+                            <div class="prob-progress-track">
+                              <div id="prob-bar-virginica" class="prob-progress-fill virginica-fill" style="width: 0%"></div>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Status Console (Optional Status Console) -->
+                  <div class="lab-card console-card">
+                    <div class="card-header">
+                      <h3>Status Diagnostic Console</h3>
+                      <span class="card-subtitle">Local system log synchronization console.</span>
+                    </div>
+                    <div class="card-body console-body">
+                      <div class="lab-terminal-lines" id="lab-terminal-output">
+                        <!-- Content generated dynamically -->
+                      </div>
+                      <div class="terminal-prompt-line">
+                        <span class="prompt-arrow">&gt;</span>
+                        <span id="lab-terminal-input-cursor" class="terminal-input-cursor"></span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- 10. Prediction History -->
+                  <div class="lab-card history-card">
+                    <div class="card-header">
+                      <h3>Prediction History</h3>
+                      <span class="card-subtitle">Log of recent classifications.</span>
+                    </div>
+                    <div class="card-body history-body">
+                      <div class="history-table-wrapper">
+                        <table class="history-table">
+                          <thead>
+                            <tr>
+                              <th>Time</th>
+                              <th>SL</th>
+                              <th>SW</th>
+                              <th>PL</th>
+                              <th>PW</th>
+                              <th>Species</th>
+                              <th>Confidence</th>
+                            </tr>
+                          </thead>
+                          <tbody id="lab-history-tbody">
+                            <!-- Populated dynamically -->
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </section>
+              
+              <!-- Tab 2: Database (Species Explorer + Feature Info) -->
+              <section id="tab-database" class="tab-pane">
+                <div class="tab-section-header">
+                  <h2>Species Database Explorer</h2>
+                  <p>Explore taxonomic information and features used by the machine learning model.</p>
+                </div>
+                
+                <!-- 2. Species Explorer -->
+                <div class="lab-species-explorer-grid">
+                  <!-- Setosa Card -->
+                  <div class="species-card-lab setosa">
+                    <div class="species-card-header">
+                      <div class="species-icon">🌸</div>
+                      <h3>Iris Setosa</h3>
+                    </div>
+                    <div class="species-card-body">
+                      <p class="species-description">
+                        Characterized by short, narrow petals and wide sepals. Setosa is completely linearly separable from Versicolor and Virginica, forming an isolated cluster in feature space.
+                      </p>
+                      <div class="species-specimen-img-holder">
+                        <img src="assets/images/setosa.png" alt="Iris Setosa" class="species-specimen-img">
+                      </div>
+                      <div class="species-stats-box">
+                        <div class="stat-line"><span>Avg Petal Length</span><strong>1.46 cm</strong></div>
+                        <div class="stat-line"><span>Avg Petal Width</span><strong>0.24 cm</strong></div>
+                        <div class="stat-line"><span>Avg Sepal Length</span><strong>5.01 cm</strong></div>
+                        <div class="stat-line"><span>Avg Sepal Width</span><strong>3.43 cm</strong></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Versicolor Card -->
+                  <div class="species-card-lab versicolor">
+                    <div class="species-card-header">
+                      <div class="species-icon">💠</div>
+                      <h3>Iris Versicolor</h3>
+                    </div>
+                    <div class="species-card-body">
+                      <p class="species-description">
+                        Features intermediate petal dimensions. It shares a complex decision boundary with Virginica, requiring recursive threshold cuts in our Decision Tree model.
+                      </p>
+                      <div class="species-specimen-img-holder">
+                        <img src="assets/images/versicolor.png" alt="Iris Versicolor" class="species-specimen-img">
+                      </div>
+                      <div class="species-stats-box">
+                        <div class="stat-line"><span>Avg Petal Length</span><strong>4.26 cm</strong></div>
+                        <div class="stat-line"><span>Avg Petal Width</span><strong>1.33 cm</strong></div>
+                        <div class="stat-line"><span>Avg Sepal Length</span><strong>5.94 cm</strong></div>
+                        <div class="stat-line"><span>Avg Sepal Width</span><strong>2.77 cm</strong></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Virginica Card -->
+                  <div class="species-card-lab virginica">
+                    <div class="species-card-header">
+                      <div class="species-icon">🌿</div>
+                      <h3>Iris Virginica</h3>
+                    </div>
+                    <div class="species-card-body">
+                      <p class="species-description">
+                        Distinguished by its robust growth, large petals, and long sepals. The feature boundary overlapping Versicolor requires precise multi-layer splits to classify.
+                      </p>
+                      <div class="species-specimen-img-holder">
+                        <img src="assets/images/virginica.png" alt="Iris Virginica" class="species-specimen-img">
+                      </div>
+                      <div class="species-stats-box">
+                        <div class="stat-line"><span>Avg Petal Length</span><strong>5.55 cm</strong></div>
+                        <div class="stat-line"><span>Avg Petal Width</span><strong>2.02 cm</strong></div>
+                        <div class="stat-line"><span>Avg Sepal Length</span><strong>6.59 cm</strong></div>
+                        <div class="stat-line"><span>Avg Sepal Width</span><strong>2.97 cm</strong></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 3. Feature Information -->
+                <div class="feature-info-lab-section">
+                  <h3 class="subsection-title">Botanical Features Used</h3>
+                  <p class="subsection-subtitle">The model leverages four core dimensions to perform classification. Let's explore how they are used.</p>
+                  
+                  <div class="feature-cards-grid">
+                    <div class="feature-card-lab">
+                      <div class="feat-badge-num">F1</div>
+                      <h4>Sepal Length</h4>
+                      <p>Length of the outer green leaves that protect the flower bud. Offers boundary differentiation in secondary nodes.</p>
+                    </div>
+                    
+                    <div class="feature-card-lab">
+                      <div class="feat-badge-num">F2</div>
+                      <h4>Sepal Width</h4>
+                      <p>Width of the outer sepals. Offers key separable traits when analyzed in combination with petal length.</p>
+                    </div>
+                    
+                    <div class="feature-card-lab">
+                      <div class="feat-badge-num">F3</div>
+                      <h4>Petal Length</h4>
+                      <p>Length of the inner colorful petals. This is the root splitting node of the Decision Tree model (cut at 2.45cm).</p>
+                    </div>
+                    
+                    <div class="feature-card-lab">
+                      <div class="feat-badge-num">F4</div>
+                      <h4>Petal Width</h4>
+                      <p>Width of the inner petals. Provides high variance separation for intermediate species (cut at 1.75cm).</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <!-- Tab 3: Diagnostics (Model Workflow + Insights) -->
+              <section id="tab-diagnostics" class="tab-pane">
+                <div class="tab-section-header">
+                  <h2>Machine Learning Pipeline & Diagnostics</h2>
+                  <p>Review the algorithmic pipeline and diagnostic performance metrics for DecodeLabs Project 2.</p>
+                </div>
+                
+                <div class="diagnostics-layout-grid">
+                  <!-- 8. Model Workflow -->
+                  <div class="lab-card workflow-card-full">
+                    <div class="card-header">
+                      <h3>Supervised Machine Learning Workflow</h3>
+                      <span class="card-subtitle">The training and inference pipeline designed for the Iris Classification System.</span>
+                    </div>
+                    <div class="card-body pipeline-body">
+                      <div class="pipeline-flow-wrapper">
+                        <div class="pipeline-node">
+                          <div class="node-icon">📂</div>
+                          <span class="node-name">Dataset Loaded</span>
+                          <span class="node-sub">150 Samples</span>
+                        </div>
+                        <div class="pipeline-connector-line"></div>
+                        <div class="pipeline-node">
+                          <div class="node-icon">🔧</div>
+                          <span class="node-name">Data Preprocessing</span>
+                          <span class="node-sub">Scaling & Formatting</span>
+                        </div>
+                        <div class="pipeline-connector-line"></div>
+                        <div class="pipeline-node">
+                          <div class="node-icon">✂️</div>
+                          <span class="node-name">Train-Test Split</span>
+                          <span class="node-sub">80% Train / 20% Test</span>
+                        </div>
+                        <div class="pipeline-connector-line"></div>
+                        <div class="pipeline-node">
+                          <div class="node-icon">🌲</div>
+                          <span class="node-name">Decision Tree Training</span>
+                          <span class="node-sub">Entropy Split Metrics</span>
+                        </div>
+                        <div class="pipeline-connector-line"></div>
+                        <div class="pipeline-node">
+                          <div class="node-icon">🧪</div>
+                          <span class="node-name">Model Testing</span>
+                          <span class="node-sub">Hold-out Set Evaluation</span>
+                        </div>
+                        <div class="pipeline-connector-line"></div>
+                        <div class="pipeline-node">
+                          <div class="node-icon">🎯</div>
+                          <span class="node-name">Accuracy Evaluation</span>
+                          <span class="node-sub">Cross-Validation Bounds</span>
+                        </div>
+                        <div class="pipeline-connector-line"></div>
+                        <div class="pipeline-node highlight">
+                          <div class="node-icon">🚀</div>
+                          <span class="node-name">Prediction Ready</span>
+                          <span class="node-sub">Web Sandbox Online</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- 9. Model Insights -->
+                  <div class="lab-card insights-card">
+                    <div class="card-header">
+                      <h3>Model Insights & Project Stats</h3>
+                      <span class="card-subtitle">Core statistical indicators of the trained model.</span>
+                    </div>
+                    <div class="card-body insights-body">
+                      <div class="insights-grid-lab">
+                        <div class="insight-stat-card">
+                          <span class="insight-stat-val">150</span>
+                          <span class="insight-stat-label">Dataset Samples</span>
+                        </div>
+                        
+                        <div class="insight-stat-card">
+                          <span class="insight-stat-val">3</span>
+                          <span class="insight-stat-label">Species Classes</span>
+                        </div>
+                        
+                        <div class="insight-stat-card">
+                          <span class="insight-stat-val">4</span>
+                          <span class="insight-stat-label">Features</span>
+                        </div>
+                        
+                        <div class="insight-stat-card text-gradient">
+                          <span class="insight-stat-val">Decision Tree</span>
+                          <span class="insight-stat-label">Supervised Algorithm</span>
+                        </div>
+                        
+                        <div class="insight-stat-card glow-cyan-bg">
+                          <span class="insight-stat-val">96.7%</span>
+                          <span class="insight-stat-label">Prediction Accuracy</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+            </main>
+          </div>
+          
+          <!-- Lab Footer / Status Strip -->
+          <footer class="lab-footer">
+            <div class="footer-left">
+              <span class="status-badge"><span class="status-dot"></span> CONNECTED TO DECISION TREE BACKEND</span>
+            </div>
+            <div class="footer-center">
+              <span>VIRTUAL LABORATORY WORKSPACE</span>
+            </div>
+            <div class="footer-right">
+              <span>MEMORY: 19.2MB | LATENCY: 1.8ms</span>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div> <!-- /#ai-lab-view -->
+
+    <!-- ================================================== -->
+    <!-- USER DASHBOARD VIEW                                -->
+    <!-- ================================================== -->
+    <div id="dashboard-view" class="inactive-view">
+      <div class="dashboard-container">
+        <div class="dashboard-header">
+          <div class="dashboard-back">
+            <button id="dashboard-back-btn" class="dashboard-icon-btn" aria-label="Back to Home">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span>Back</span>
+            </button>
+          </div>
+          <div class="dashboard-user-badge">
+            <div class="dashboard-avatar" id="dashboard-avatar">U</div>
+            <div class="dashboard-user-details">
+              <h2 id="dashboard-user-name">User</h2>
+              <span id="dashboard-user-email">user@email.com</span>
+              <span class="dashboard-member-since" id="dashboard-member-since">Member since --</span>
+            </div>
+          </div>
+          <div class="dashboard-header-actions">
+            <button id="dashboard-logout-btn" class="dashboard-action-btn logout-action">Sign Out</button>
+          </div>
+        </div>
+
+        <div class="dashboard-stats-grid">
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon">📊</div>
+            <div class="dash-stat-body">
+              <span class="dash-stat-value" id="dash-stat-predictions">0</span>
+              <span class="dash-stat-label">Total Predictions</span>
+            </div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon">🎯</div>
+            <div class="dash-stat-body">
+              <span class="dash-stat-value" id="dash-stat-accuracy">--</span>
+              <span class="dash-stat-label">Avg Confidence</span>
+            </div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon">🌸</div>
+            <div class="dash-stat-body">
+              <span class="dash-stat-value" id="dash-stat-top-species">--</span>
+              <span class="dash-stat-label">Most Predicted</span>
+            </div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon">📅</div>
+            <div class="dash-stat-body">
+              <span class="dash-stat-value" id="dash-stat-account-age">--</span>
+              <span class="dash-stat-label">Account Age</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-content-grid">
+          <!-- Prediction History -->
+          <div class="dash-card dash-card-history">
+            <div class="dash-card-header">
+              <h3>Prediction History</h3>
+              <span class="dash-card-subtitle">Your recent classification records</span>
+            </div>
+            <div class="dash-card-body">
+              <div class="dash-history-wrapper">
+                <table class="dash-history-table">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>SL</th>
+                      <th>SW</th>
+                      <th>PL</th>
+                      <th>PW</th>
+                      <th>Species</th>
+                      <th>Conf.</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dash-history-tbody">
+                    <tr><td colspan="7" class="dash-empty-state">Sign in to see your prediction history.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Account Settings -->
+          <div class="dash-card dash-card-settings">
+            <div class="dash-card-header">
+              <h3>Account Settings</h3>
+              <span class="dash-card-subtitle">Manage your profile credentials</span>
+            </div>
+            <div class="dash-card-body">
+              <div class="dash-settings-form">
+                <div class="dash-field-group">
+                  <label for="dash-edit-username">Username</label>
+                  <div class="dash-field-row">
+                    <input type="text" id="dash-edit-username" class="dash-input">
+                    <button id="dash-save-username" class="dash-save-btn">Save</button>
+                  </div>
+                  <span id="dash-username-msg" class="dash-field-msg"></span>
+                </div>
+                <div class="dash-field-group">
+                  <label for="dash-edit-email">Email</label>
+                  <div class="dash-field-row">
+                    <input type="email" id="dash-edit-email" class="dash-input">
+                    <button id="dash-save-email" class="dash-save-btn">Save</button>
+                  </div>
+                  <span id="dash-email-msg" class="dash-field-msg"></span>
+                </div>
+                <div class="dash-field-group">
+                  <label for="dash-edit-password">New Password</label>
+                  <div class="dash-field-row">
+                    <input type="password" id="dash-edit-password" class="dash-input" placeholder="Min 6 characters">
+                    <button id="dash-save-password" class="dash-save-btn">Update</button>
+                  </div>
+                  <span id="dash-password-msg" class="dash-field-msg"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="dash-card dash-card-activity">
+            <div class="dash-card-header">
+              <h3>Quick Actions</h3>
+              <span class="dash-card-subtitle">Jump back into the action</span>
+            </div>
+            <div class="dash-card-body">
+              <div class="dash-actions-grid">
+                <button id="dash-go-lab" class="dash-action-card">
+                  <span class="dash-action-icon">🔬</span>
+                  <span class="dash-action-title">AI Lab</span>
+                  <span class="dash-action-desc">Run classifications</span>
+                </button>
+                <button id="dash-go-classifier" class="dash-action-card">
+                  <span class="dash-action-icon">🌲</span>
+                  <span class="dash-action-title">Sandbox</span>
+                  <span class="dash-action-desc">Decision tree demo</span>
+                </button>
+                <button id="dash-go-home" class="dash-action-card">
+                  <span class="dash-action-icon">🏠</span>
+                  <span class="dash-action-title">Home</span>
+                  <span class="dash-action-desc">Back to landing</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /#dashboard-view -->
+
+  </div> <!-- /#main-app -->
+
+  <!-- ================================================== -->
+  <!-- AUTH MODAL (LOGIN / REGISTER / FORGOT PASSWORD)   -->
+  <!-- ================================================== -->
+  <div id="auth-modal-overlay" class="auth-overlay">
+    <div class="auth-modal">
+      <button class="auth-close-btn" id="auth-close-btn">&times;</button>
+
+      <!-- Login Form -->
+      <div id="auth-login-form" class="auth-form active">
+        <div class="auth-form-header">
+          <div class="auth-logo-icon">🔬</div>
+          <h2>Welcome Back</h2>
+          <p>Sign in to your FloraMind account</p>
+        </div>
+        <div class="auth-input-group">
+          <input type="text" id="login-email" class="auth-input" placeholder=" " required autocomplete="username">
+          <label>Email or Username</label>
+          <div class="auth-input-line"></div>
+        </div>
+        <div class="auth-input-group">
+          <input type="password" id="login-password" class="auth-input" placeholder=" " required autocomplete="current-password">
+          <label>Password</label>
+          <div class="auth-input-line"></div>
+        </div>
+        <div id="login-error" class="auth-error-msg"></div>
+        <div class="auth-options-row">
+          <label class="remember-me-label">
+            <input type="checkbox" id="remember-me" class="remember-me-checkbox">
+            <span class="remember-me-mark"></span>
+            <span>Remember Me</span>
+          </label>
+        </div>
+        <button class="auth-submit-btn" id="login-btn">Sign In</button>
+        <div class="auth-switch-links">
+          <a href="#" id="show-forgot-link">Forgot Password?</a>
+          <a href="#" id="show-register-link">Create Account</a>
+        </div>
+      </div>
+
+      <!-- Register Form -->
+      <div id="auth-register-form" class="auth-form">
+        <div class="auth-form-header">
+          <div class="auth-logo-icon">🌱</div>
+          <h2>Create Account</h2>
+          <p>Join the FloraMind AI research platform</p>
+        </div>
+        <div class="auth-input-group">
+          <input type="text" id="reg-username" class="auth-input" placeholder=" " required autocomplete="username">
+          <label>Username</label>
+          <div class="auth-input-line"></div>
+        </div>
+        <div class="auth-input-group">
+          <input type="email" id="reg-email" class="auth-input" placeholder=" " required autocomplete="email">
+          <label>Email</label>
+          <div class="auth-input-line"></div>
+        </div>
+        <div class="auth-input-group">
+          <input type="password" id="reg-password" class="auth-input" placeholder=" " required autocomplete="new-password">
+          <label>Password (min 6 characters)</label>
+          <div class="auth-input-line"></div>
+        </div>
+        <div class="auth-input-group">
+          <input type="password" id="reg-confirm-password" class="auth-input" placeholder=" " required autocomplete="new-password">
+          <label>Confirm Password</label>
+          <div class="auth-input-line"></div>
+        </div>
+        <div id="register-error" class="auth-error-msg"></div>
+        <button class="auth-submit-btn" id="register-btn">Register</button>
+        <div class="auth-switch-links">
+          <a href="#" id="show-login-link">Already have an account? Sign In</a>
+        </div>
+      </div>
+
+      <!-- Forgot Password Form -->
+      <div id="auth-forgot-form" class="auth-form">
+        <div class="auth-form-header">
+          <div class="auth-logo-icon">🔑</div>
+          <h2>Reset Password</h2>
+          <p>Enter your email or username to retrieve your password</p>
+        </div>
+        <div class="auth-input-group">
+          <input type="text" id="forgot-input" class="auth-input" placeholder=" " required>
+          <label>Email or Username</label>
+          <div class="auth-input-line"></div>
+        </div>
+        <div id="forgot-result" class="auth-error-msg"></div>
+        <button class="auth-submit-btn" id="forgot-btn">Retrieve Password</button>
+        <div class="auth-switch-links">
+          <a href="#" id="back-to-login-link">Back to Sign In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- WELCOME TOAST                                      -->
+  <!-- ================================================== -->
+  <div id="welcome-toast" class="welcome-toast">
+    <div class="toast-icon">🎉</div>
+    <div class="toast-content">
+      <div class="toast-title">Welcome!</div>
+      <div class="toast-message" id="toast-message">You are signed in.</div>
+    </div>
+  </div>
+
+  <!-- Javascript -->
+  <script src="assets/js/index.js" defer></script>
+
+  <!-- Service Worker Registration for PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {
+          console.log('Service worker registration skipped (offline or unsupported)');
+        });
+      });
+    }
+  </script>
+</body>
+</html>

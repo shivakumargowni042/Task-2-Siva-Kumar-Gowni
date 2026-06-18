@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="64" fill="#030508"/>
+  <circle cx="256" cy="256" r="48" fill="#00f0ff"/>
+  <path d="M256,180 C256,100 224,60 256,20 C288,60 256,100 256,180 Z" fill="none" stroke="#ff007f" stroke-width="8"/>
+  <path d="M256,332 C256,412 224,452 256,492 C288,452 256,412 256,332 Z" fill="none" stroke="#ff007f" stroke-width="8"/>
+  <path d="M180,256 C100,256 60,224 20,256 C60,288 100,256 180,256 Z" fill="none" stroke="#00b4d8" stroke-width="8"/>
+  <path d="M332,256 C412,256 452,224 492,256 C452,288 412,256 332,256 Z" fill="none" stroke="#00b4d8" stroke-width="8"/>
+  <path d="M216,216 C140,140 100,100 60,80 C100,60 140,100 216,216 Z" fill="none" stroke="#8338ec" stroke-width="6"/>
+  <path d="M296,216 C372,140 412,100 452,80 C412,60 372,100 296,216 Z" fill="none" stroke="#8338ec" stroke-width="6"/>
+  <path d="M216,296 C140,372 100,412 60,432 C100,452 140,412 216,296 Z" fill="none" stroke="#00f0ff" stroke-width="6"/>
+  <path d="M296,296 C372,372 412,412 452,432 C412,452 372,412 296,296 Z" fill="none" stroke="#00f0ff" stroke-width="6"/>
+</svg>
